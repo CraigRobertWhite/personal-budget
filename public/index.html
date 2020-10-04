@@ -106,6 +106,12 @@
             </p>
         </article>
     </section>
+    <section class="page-area">
+        <article>
+            <h1 style="text-align: center;">Budget</h1>
+            <canvas id="budget-chart" width="400" height="400"></canvas>
+        </article>
+    </section>
 </main>
 
 <!-- This is a Semantic HTML Change -->
@@ -113,6 +119,59 @@
 <footer class="bottom center" aria-label="Footer">
     All rights reserved &copy; Craig White
 </footer>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/chart.js/dist/Chart.min.js"></script>
+
+<script>
+    // Defined data variable to be populated with expenses and fill chart
+    let data = {
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(255, 99, 132)',
+                'rgba(54, 162, 235)',
+                'rgba(255, 206, 86)',
+                'rgba(75, 192, 192)',
+                'rgba(153, 102, 255)',
+                'rgba(255, 159, 64)'
+            ]
+        }],
+        labels: []
+    };
+
+    let methods = {
+        // Get a list of expenses from the `/budget` route and populate chart dataset
+        async getExpenses() {
+            try {
+                const response = await axios.get('/budget');
+
+                response.data.expenses.forEach(expense => {
+                    data.datasets[0].data.push(expense.amount);
+                    data.labels.push(expense.type);
+                });
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        // Create Chart.JS chart
+        createChart() {
+            let context = document.getElementById('budget-chart');
+            new Chart(context, {
+                type: 'doughnut',
+                data: data
+            });
+        }
+    };
+
+    // Following a Vue.js structure for mounted functions
+    async function mounted() {
+        await methods.getExpenses();
+        methods.createChart()
+    }
+
+    mounted();
+</script>
 
 </body>
 </html>

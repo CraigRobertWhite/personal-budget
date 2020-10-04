@@ -68,11 +68,14 @@ header.hero h2 {
 .container {
     padding: 40px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-area {
     max-width: 768px;
     display: inline-block;
+    margin-bottom: 3rem;
 }
 
 footer.bottom {
