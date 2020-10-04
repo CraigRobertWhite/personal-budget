@@ -1,5 +1,4 @@
-# Info
+# Personal Budget
+### UNCC - ITIS 4166 - Quiz 3 Assignment
 
-The path to NGInx main folder:
-/usr/share/nginx/html
-
+http://206.189.201.141/pb/
