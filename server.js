@@ -2,23 +2,6 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const budget = {
-    expenses: [
-        {
-            type: 'Rent',
-            amount: 750
-        },
-        {
-            type: 'Restaurants',
-            amount: 200
-        },
-        {
-            type: 'Groceries',
-            amount: 200
-        },
-    ]
-};
-
 app.use('/', express.static('public'));
 
 app.get('/hello', (request, response) => {
@@ -26,7 +9,7 @@ app.get('/hello', (request, response) => {
 });
 
 app.get('/budget', (request, response) => {
-    response.json(budget);
+    response.json(require('./budget.json'));
 });
 
 app.listen(port, () => {

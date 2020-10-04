@@ -1,0 +1,32 @@
+{
+  "expenses": [
+    {
+      "type": "Rent",
+      "amount": 750
+    },
+    {
+      "type": "Restaurants",
+      "amount": 200
+    },
+    {
+      "type": "Groceries",
+      "amount": 200
+    },
+    {
+      "type": "Transportation",
+      "amount": 50
+    },
+    {
+      "type": "Insurance",
+      "amount": 150
+    },
+    {
+      "type": "Savings/Investments",
+      "amount": 150
+    },
+    {
+      "type": "Recreation",
+      "amount": 100
+    }
+  ]
+}
