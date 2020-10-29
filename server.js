@@ -58,6 +58,12 @@ app.get('/expenses', (request, response) => {
     });
 });
 
+app.post('/expenses', (request, response) => {
+    Expense.create(request.body, (error, expense) => {
+        response.send(error || expense);
+    })
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on http://localhost:${port}`)
 });
