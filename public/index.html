@@ -128,15 +128,7 @@
     let data = {
         datasets: [{
             data: [],
-            backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-                'rgba(255, 206, 86)',
-                'rgba(75, 192, 192)',
-                'rgba(153, 102, 255)',
-                'rgba(255, 159, 64)',
-                'rgb(255,80,239)'
-            ]
+            backgroundColor: []
         }],
         labels: []
     };
@@ -145,11 +137,12 @@
         // Get a list of expenses from the `/budget` route and populate chart dataset
         async getExpenses() {
             try {
-                const response = await axios.get('/budget');
+                const { data: expenses } = await axios.get('/expenses');
 
-                response.data.expenses?.forEach(expense => {
-                    data.datasets[0].data.push(expense.amount);
-                    data.labels.push(expense.type);
+                expenses.forEach(expense => {
+                    data.datasets[0].data.push(expense.cost);
+                    data.datasets[0].backgroundColor.push(expense.color);
+                    data.labels.push(expense.title);
                 });
             } catch (error) {
                 console.log(error)

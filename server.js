@@ -44,14 +44,6 @@ let Expense = mongoose.model('Expense', ExpenseSchema);
 app.use('/', express.static('public'));
 app.use(express.json());
 
-app.get('/hello', (request, response) => {
-    response.send('Hello World!');
-});
-
-app.get('/budget', (request, response) => {
-    response.json(require('./budget.json'));
-});
-
 app.get('/expenses', (request, response) => {
     Expense.find({}, (error, expenses) => {
         response.send(error || expenses);
