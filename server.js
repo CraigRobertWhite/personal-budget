@@ -52,6 +52,12 @@ app.get('/budget', (request, response) => {
     response.json(require('./budget.json'));
 });
 
+app.get('/expenses', (request, response) => {
+    Expense.find({}, (error, expenses) => {
+        response.send(error || expenses);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on http://localhost:${port}`)
 });
