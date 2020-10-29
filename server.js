@@ -42,6 +42,7 @@ let Expense = mongoose.model('Expense', ExpenseSchema);
 // Routes --------------------------------------------------------------------------------------------------------------
 
 app.use('/', express.static('public'));
+app.use(express.json());
 
 app.get('/hello', (request, response) => {
     response.send('Hello World!');
