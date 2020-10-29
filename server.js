@@ -15,6 +15,30 @@ mongoose.connect('mongodb://localhost:27017/quiz_8', {
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// Schemas -------------------------------------------------------------------------------------------------------------
+
+let ExpenseSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        maxLength: 50
+    },
+    cost: {
+        type: Number,
+        required: true,
+        min: 0.01
+    },
+    color: {
+        type: String,
+        required: true,
+        validator: [(hexColor) => (/^#[0-9A-F]{6}$/i).test(hexColor), 'Invalid hex color value']
+    }
+});
+
+// Models --------------------------------------------------------------------------------------------------------------
+
+let Expense = mongoose.model('Expense', ExpenseSchema);
+
 // Routes --------------------------------------------------------------------------------------------------------------
 
 app.use('/', express.static('public'));
