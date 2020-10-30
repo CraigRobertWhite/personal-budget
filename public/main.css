@@ -1,14 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-size: 10px;
-    font-family: 'Monserrat', sans-serif;
-}
-
 nav.menu {
     width: 100%;
     background-color: #4d5791;
@@ -28,7 +17,6 @@ nav.menu ul li a {
     display: block;
     padding: 0 20px;
     line-height: 44px;
-    font-size: 1.4em;
     text-decoration: none;
     color: #fff;
     margin: 0;
@@ -49,57 +37,21 @@ header.hero {
     padding-top: 40px;
 }
 
-header.hero h1,
-header.hero h2 {
+header.hero h2,
+header.hero h4 {
     text-align: center;
-    margin: 0;
-}
-
-header.hero h1 {
-    color: #fff;
-    font-size: 4.2em;
-    margin-bottom: 20px;
 }
 
 header.hero h2 {
+    color: #fff;
+}
+
+header.hero h4 {
     color: #4d5791;
 }
 
-.container {
-    padding: 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.page-area {
-    max-width: 768px;
-    display: inline-block;
-    margin-bottom: 3rem;
-}
-
-footer.bottom {
+footer {
     height: 50px;
     background-color: #b4c6f0;
     padding: 40px;
-}
-
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.container article.text-box {
-    display: inline-block;
-    width: 100%;
-    max-width: 340px;
-    text-align: justify;
-    margin: 20px;
-}
-
-@media screen and (min-width: 768px) {
-    .container .article.text-box {
-        margin: 10px;
-    }
 }

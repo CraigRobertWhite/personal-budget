@@ -8,6 +8,7 @@
           content="These free budget guides will enlighten you with cutting edge budget strategies and techniques. Click here to learn more!">
     <title>Personal Budget</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 <!-- This is a Semantic HTML Change -->
@@ -17,25 +18,24 @@
         <li><a href="index.html" aria-label="Home">Home</a></li>
         <li><a href="about.html" aria-label="About">About</a></li>
         <li><a href="login.html" aria-label="Login">Login</a></li>
-        <!-- This is an SEO Change -->
-        <li><a href="https://google.com" rel="external nofollow" aria-label="Google" target="_blank">Google</a></li>
     </ul>
 </nav>
 
 <!-- This is a Semantic HTML Change -->
 <header class="hero">
-    <h1>Personal Budget</h1>
-    <h2>A personal-budget management app</h2>
+    <h2>Personal Budget</h2>
+    <h4>A personal-budget management app</h4>
 </header>
 
 <!-- This is a Semantic HTML Change -->
 <!-- This is an A11y Change -->
-<main class="container center" aria-label="Main">
+<main class="mt-5 container d-flex flex-column" aria-label="Main">
     <!-- This is a Semantic HTML Change -->
-    <section class="page-area">
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Stay on track</h1>
+    <section class="row">
+        <h3 class="col-12 mb-4">Helpful Tips</h3>
+
+        <article class="col-md-6">
+            <h5>Stay on track</h5>
             <p>
                 Do you know where you are spending your money? If you really stop to track it down,
                 you would get surprised! Proper budget management depends on real data... and this
@@ -43,17 +43,15 @@
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Alerts</h1>
+        <article class="col-md-6">
+            <h5>Alerts</h5>
             <p>
                 What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Results</h1>
+        <article class="col-md-6">
+            <h5>Results</h5>
             <p>
                 People who stick to a financial plan, budgeting every expense, get out of debt faster!
                 Also, they to live happier lives... since they expend without guilt or fear...
@@ -61,17 +59,15 @@
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Free</h1>
+        <article class="col-md-6">
+            <h5>Free</h5>
             <p>
                 This app is free!!! And you are the only one holding your data!
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Stay on track</h1>
+        <article class="col-md-6">
+            <h5>Stay on track</h5>
             <p>
                 Do you know where you are spending your money? If you really stop to track it down,
                 you would get surprised! Proper budget management depends on real data... and this
@@ -79,17 +75,15 @@
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Alerts</h1>
+        <article class="col-md-6">
+            <h5>Alerts</h5>
             <p>
                 What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Results</h1>
+        <article class="col-md-6">
+            <h5>Results</h5>
             <p>
                 People who stick to a financial plan, budgeting every expense, get out of debt faster!
                 Also, they to live happier lives... since they expend without guilt or fear...
@@ -97,30 +91,30 @@
             </p>
         </article>
 
-        <!-- This is a Semantic HTML Change -->
-        <article class="text-box">
-            <h1>Free</h1>
+        <article class="col-md-6">
+            <h5>Free</h5>
             <p>
                 This app is free!!! And you are the only one holding your data!
             </p>
         </article>
     </section>
-    <section class="page-area">
-        <article>
-            <h1 style="text-align: center;">Budget</h1>
-            <canvas id="budget-chart" width="400" height="400"></canvas>
-        </article>
+    <hr>
+    <section>
+        <h3 class="mb-4">Common Expenses</h3>
+        <canvas id="budget-chart" width="5"></canvas>
     </section>
 </main>
 
 <!-- This is a Semantic HTML Change -->
 <!-- This is an A11y Change -->
-<footer class="bottom center" aria-label="Footer">
+<footer class="mt-5 footer d-flex align-items-center" aria-label="Footer">
     All rights reserved &copy; Craig White
 </footer>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/chart.js/dist/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     // Defined data variable to be populated with expenses and fill chart
