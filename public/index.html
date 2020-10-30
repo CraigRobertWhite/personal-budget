@@ -99,9 +99,39 @@
         </article>
     </section>
     <hr>
-    <section>
-        <h3 class="mb-4">Common Expenses</h3>
-        <canvas id="budget-chart" width="5"></canvas>
+    <section class="row">
+        <h3 class="col-12 mb-4">Common Expenses</h3>
+
+        <article class="col-md-6">
+            <h5 class="mb-3">Common Expenses</h5>
+            <canvas id="budget-chart" width="10"></canvas>
+        </article>
+
+        <article class="col-md-6">
+            <h5 class="mb-3">Add an Expense</h5>
+            <form onsubmit="return methods.addExpense(event)">
+                <fieldset id="expense-fieldset" class="d-flex flex-column">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input id="title" type="text" class="form-control"  required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cost">Cost</label>
+                        <input id="cost" type="number" min="1" step="0.01" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input id="color" type="color" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-secondary ml-auto mt-2">
+                        Submit
+                    </button>
+                </fieldset>
+            </form>
+        </article>
     </section>
 </main>
 
@@ -127,7 +157,9 @@
     };
 
     let methods = {
-        // Get a list of expenses from the `/budget` route and populate chart dataset
+        /**
+         * Gets all expenses
+         */
         async getExpenses() {
             try {
                 const { data: expenses } = await axios.get('/expenses');
@@ -141,7 +173,52 @@
                 console.log(error)
             }
         },
-        // Create Chart.JS chart
+        /**
+         * Creates an expense
+         *
+         * @param {Event} event of a form
+         */
+        async addExpense(event) {
+            // Prevent the default event of the form from reloading the page
+            event.preventDefault();
+
+            // Store DOM elements into variables
+            let titleElement = document.getElementById('title');
+            let costElement = document.getElementById('cost');
+            let colorElement = document.getElementById('color');
+            let expenseFieldset = document.getElementById('expense-fieldset');
+
+            try {
+                expenseFieldset.set = true;
+
+                // Send expense to back-end
+                const { data: expense } = await axios.post('/expenses', {
+                    title: titleElement.value,
+                    cost: costElement.value,
+                    color: colorElement.value
+                });
+
+                // Add expense to list of expenses
+                data.datasets[0].data.push(expense.cost);
+                data.datasets[0].backgroundColor.push(expense.color);
+                data.labels.push(expense.title);
+
+                // Clear form inputs
+                titleElement.value = null;
+                costElement.value = null;
+                colorElement.value = null;
+
+                // Redraw chart
+                methods.createChart();
+            } catch (error) {
+                console.log(error)
+            } finally {
+                expenseFieldset.disabled = false;
+            }
+        },
+        /**
+         * Draws the Chart.js chart
+         */
         createChart() {
             let context = document.getElementById('budget-chart');
             new Chart(context, {
@@ -151,7 +228,9 @@
         }
     };
 
-    // Following a Vue.js structure for mounted functions
+    /**
+     * Following a Vue.js structure for mounted functions
+     */
     async function mounted() {
         await methods.getExpenses();
         methods.createChart()
